@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
+const API = import.meta.env.VITE_API_URL || "";
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function Login() {
@@ -39,7 +40,7 @@ export default function Login() {
 
     setLoading(true);
     try {
-      const res = await fetch("/api/login", {
+      const res = await fetch(`${API}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
